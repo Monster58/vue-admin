@@ -68,7 +68,11 @@
               :enterable="false"
               placement="top"
             >
-              <el-button @click="$refs['setUserRole'].open(scope.row)" size="mini" type="warning">
+              <el-button
+                @click="$refs['setUserRole'].open(scope.row)"
+                size="mini"
+                type="warning"
+              >
                 <i class="el-icon-setting"></i>
               </el-button>
             </el-tooltip>
@@ -174,7 +178,7 @@ import { getUserList, changeUserState, addUser } from "../../api/index";
 import ajax from "../../api/ajax.js";
 import axios from "axios";
 import validator from "@u/validator.js";
-import setUserRole from './setUserRole'
+import setUserRole from "./setUserRole";
 export default {
   components: {
     setUserRole

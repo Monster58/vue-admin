@@ -61,7 +61,6 @@ export default {
       this.$refs.loginForm.validate(boolean => {
         if (boolean) {
           login(this.formLabelAlign).then(res => {
-            console.log(res);
             if (res.meta.status !== 200) {
               this.$message.error(res.meta.msg);
             } else {

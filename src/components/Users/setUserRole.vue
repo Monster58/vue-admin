@@ -1,10 +1,19 @@
 <template>
-  <el-dialog title="分配角色" :visible.sync="setUserRoleDialogVisible" width="60%">
-    <p>当前用户：{{user.username}}</p>
-    <p>当前角色：{{user.role_name}}</p>
+  <el-dialog
+    title="分配角色"
+    :visible.sync="setUserRoleDialogVisible"
+    width="60%"
+  >
+    <p>当前用户：{{ user.username }}</p>
+    <p>当前角色：{{ user.role_name }}</p>
     <p>分配新角色</p>
     <el-select v-model="checkedRoleId" placeholder="请选择">
-      <el-option v-for="item in allRoles" :key="item.id" :label="item.roleName" :value="item.id"></el-option>
+      <el-option
+        v-for="item in allRoles"
+        :key="item.id"
+        :label="item.roleName"
+        :value="item.id"
+      ></el-option>
     </el-select>
     <span slot="footer" class="dialog-footer">
       <el-button @click="setUserRoleDialogVisible = false">取 消</el-button>
@@ -37,7 +46,7 @@ export default {
           if (res.data.meta.status == 200) {
             this.$message.success(res.data.meta.msg);
             this.setUserRoleDialogVisible = false;
-            this.$emit('_getUserList')
+            this.$emit("_getUserList");
           } else {
             this.$message.error(res.data.meta.msg);
           }

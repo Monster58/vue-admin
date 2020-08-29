@@ -2,36 +2,52 @@
   <div>
     <my-breadcrumb :breadcrumb="['权限管理', '角色列表']"></my-breadcrumb>
     <el-card>
-      <el-button @click="$refs['addRoles'].open()" style="margin-bottom: 15px;" type="primary">添加角色</el-button>
+      <el-button
+        @click="$refs['addRoles'].open()"
+        style="margin-bottom: 15px;"
+        type="primary"
+        >添加角色</el-button
+      >
       <el-table :data="rolesList" border stripe>
         <el-table-column type="expand">
           <template slot-scope="scope">
             <el-row
               class="row1"
               :gutter="20"
-              v-for="(level1,index) in scope.row.children"
+              v-for="(level1, index) in scope.row.children"
               :key="index"
             >
               <el-col :span="5">
-                <el-tag closable @close="deleteRolesRights(scope,level1.id)" type="warning">{{level1.authName}}</el-tag>
+                <el-tag
+                  closable
+                  @close="deleteRolesRights(scope, level1.id)"
+                  type="warning"
+                  >{{ level1.authName }}</el-tag
+                >
               </el-col>
               <el-col :span="19">
                 <el-row
                   class="row2"
-                  v-for="(level2,index2) in level1.children"
+                  v-for="(level2, index2) in level1.children"
                   :key="index2"
                   :gutter="20"
                 >
                   <el-col :span="4">
-                    <el-tag closable @close="deleteRolesRights(scope,level2.id)" type="success">{{level2.authName}}</el-tag>
+                    <el-tag
+                      closable
+                      @close="deleteRolesRights(scope, level2.id)"
+                      type="success"
+                      >{{ level2.authName }}</el-tag
+                    >
                   </el-col>
                   <el-col :span="20">
                     <el-tag
-                      @close="deleteRolesRights(scope,level3.id)"
+                      @close="deleteRolesRights(scope, level3.id)"
                       closable
-                      v-for="(level3,index3) in level2.children"
+                      v-for="(level3, index3) in level2.children"
                       :key="index3"
-                    >{{level3.authName}}</el-tag>
+                      >{{ level3.authName }}</el-tag
+                    >
                   </el-col>
                 </el-row>
               </el-col>
@@ -48,14 +64,22 @@
               type="primary"
               icon="el-icon-edit"
               @click="$refs['editRoles'].open(scope.row.id)"
-            >编辑</el-button>
+              >编辑</el-button
+            >
             <el-button
               size="mini"
               type="danger"
               icon="el-icon-delete"
               @click="deleteRoles(scope.row.id)"
-            >删除</el-button>
-            <el-button @click="$refs['setRights'].open(scope.row)" size="mini" type="warning" icon="el-icon-setting">分配权限</el-button>
+              >删除</el-button
+            >
+            <el-button
+              @click="$refs['setRights'].open(scope.row)"
+              size="mini"
+              type="warning"
+              icon="el-icon-setting"
+              >分配权限</el-button
+            >
           </template>
         </el-table-column>
       </el-table>
@@ -110,23 +134,23 @@ export default {
         type: "warning"
       })
         .then(() => {
-          deleteRolesRightsAjax(`roles/${scope.row.id}/rights/${rightsId}`).then(
-            res => {
-              // console.log(res);
-              if (res.meta.status != 200) {
-                this.$message({
-                  type: "error",
-                  message: res.meta.msg
-                });
-              } else {
-                this.$message({
-                  type: "success",
-                  message: res.meta.msg
-                });
-                scope.row.children = res.data
-              }
+          deleteRolesRightsAjax(
+            `roles/${scope.row.id}/rights/${rightsId}`
+          ).then(res => {
+            // console.log(res);
+            if (res.meta.status != 200) {
+              this.$message({
+                type: "error",
+                message: res.meta.msg
+              });
+            } else {
+              this.$message({
+                type: "success",
+                message: res.meta.msg
+              });
+              scope.row.children = res.data;
             }
-          );
+          });
         })
         .catch(() => {
           this.$message({

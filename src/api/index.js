@@ -32,3 +32,5 @@ export const addRoles = data => ajax("roles", data, "POST");
 export const deleteRoles = (url, data) => ajax(url, data, "DELETE");
 // 删除角色指定权限
 export const deleteRolesRightsAjax = (url, data) => ajax(url, data, "DELETE");
+//
+export const setRolesRightsAjax = (url, data) => ajax(url, data, "POST");

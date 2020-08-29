@@ -1,5 +1,10 @@
 <template>
-  <el-dialog @close="_reset" title="分配权限" :visible.sync="setRolesDialogVisible" width="60%">
+  <el-dialog
+    @close="_reset"
+    title="分配权限"
+    :visible.sync="setRolesDialogVisible"
+    width="60%"
+  >
     <el-tree
       :data="allRights"
       :props="defaultProps"
@@ -64,8 +69,8 @@ export default {
       }).then(res => {
         if (res.meta.status == 200) {
           this.$message.success(res.meta.msg);
-          this.$emit('_getRoles')
-          this.setRolesDialogVisible = false
+          this.$emit("_getRoles");
+          this.setRolesDialogVisible = false;
         } else {
           this.$message.error(res.meta.msg);
         }

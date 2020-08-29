@@ -22,8 +22,6 @@
           <el-menu
             :default-active="this.$route.path"
             class="el-menu-vertical-demo"
-            @open="_handleOpen"
-            @close="_handleClose"
             background-color="#545c64"
             text-color="#fff"
             active-text-color="#409eff"
@@ -63,7 +61,6 @@
           :default-active="activeIndex2"
           class="el-menu-demo"
           mode="horizontal"
-          @select="_handleSelect"
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b"
@@ -103,15 +100,6 @@ export default {
     getMenuList().then(res => (this.menuList = res.data));
   },
   methods: {
-    _handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    _handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    _handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-    },
     logout() {
       sessionStorage.removeItem("token");
       this.$router.replace("/login");

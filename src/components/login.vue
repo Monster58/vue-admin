@@ -65,6 +65,7 @@ export default {
               this.$message.error(res.meta.msg);
             } else {
               window.sessionStorage.setItem("token", res.data.token);
+              window.sessionStorage.setItem("username", res.data.username);
               this.$router.push("/home");
               this.$message.success(res.meta.msg);
             }

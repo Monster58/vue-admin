@@ -11,7 +11,7 @@
             :width="isCollapse ? '80%' : '20%'"
             class="logo-img"
             src="@/assets/logo.png"
-            alt=""
+            alt
           />
           <span v-show="!isCollapse">VUE后台管理系统</span>
         </router-link>
@@ -65,7 +65,16 @@
           text-color="#fff"
           active-text-color="#ffd04b"
         >
-          <el-button type="primary" @click="logout">退出</el-button>
+          <el-dropdown @command="logout">
+            <span class="el-dropdown-link">
+              <i class="el-icon-user-solid"></i>
+              {{ username }}
+              <i class="el-icon-arrow-down el-icon--right"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>退出</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
         </el-menu>
       </el-header>
       <el-main>
@@ -93,11 +102,13 @@ export default {
         "101": "el-icon-s-goods",
         "102": "el-icon-s-order",
         "145": "el-icon-s-data"
-      }
+      },
+      username: ""
     };
   },
   created() {
     getMenuList().then(res => (this.menuList = res.data));
+    this.username = sessionStorage.getItem("username");
   },
   methods: {
     logout() {
@@ -111,29 +122,41 @@ export default {
 <style lang="stylus" scoped>
 @import '../common/stylus/minix.styl';
 
+.el-dropdown-link {
+  color: #909399;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #409EFF;
+  }
+}
+
 .el-aside {
   background: rgb(84, 92, 100);
   min-height: 100vh;
-  position relative
-  overflow unset
+  position: relative;
+  overflow: unset;
+
   // transition all .6s ease-out
   .toggle-menu {
-    position absolute
-    width 40px
-    height 40px
-    right -40px
-    top 12px
-    z-index 1
-    font-size 30px
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: -40px;
+    top: 12px;
+    z-index: 1;
+    font-size: 30px;
     // border 1px solid #ccc
-    line-height 40px
-    text-align center
-    color: #909399
-    cursor pointer
-    transition all .3s ease
+    line-height: 40px;
+    text-align: center;
+    color: #909399;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
+
   .toggle-menu:hover {
-    color #fff
+    color: #fff;
   }
 }
 
@@ -142,13 +165,13 @@ export default {
   text-align: center;
   background: rgb(84, 92, 100);
   color: #fff;
-  display flex
-  align-items center
+  display: flex;
+  align-items: center;
   padding: 10px;
-  span {
-    display block
-  }
 
+  span {
+    display: block;
+  }
 }
 
 .el-menu-vertical-demo {

@@ -253,10 +253,7 @@ export default {
       this._getUserList();
     },
     handleMgStateChange(obj) {
-      changeUserState({
-        users: obj.id,
-        state: obj.mg_state
-      }).then(res => {
+      changeUserState(`users/${obj.id}/state/${obj.mg_state}`).then(res => {
         if (res.meta.status != 200) {
           obj.mg_state = !obj.mg_state;
           this.$message.error(res.meta.msg);

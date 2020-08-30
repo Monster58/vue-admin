@@ -11,13 +11,11 @@ export const getMenuList = () => ajax("menus");
 //获取用户列表
 export const getUserList = data => ajax("users", data);
 //修改用户状态
-export const changeUserState = data => ajax("", data, "PUT");
+export const changeUserState = (url, data) => ajax(url, data, "PUT");
 //添加用户
 export const addUser = data => ajax("users", data, "POST");
 //根据id获取用户
 // export const editUserById = data => ajax("users", data);
-// 提交编辑用户
-export const subEditUser = data => ajax("", data, "PUT");
 //获取权限列表
 export const getRights = () => ajax("rights/list");
 //获取权限列表
@@ -32,5 +30,15 @@ export const addRoles = data => ajax("roles", data, "POST");
 export const deleteRoles = (url, data) => ajax(url, data, "DELETE");
 // 删除角色指定权限
 export const deleteRolesRightsAjax = (url, data) => ajax(url, data, "DELETE");
-//
+// 角色授权
 export const setRolesRightsAjax = (url, data) => ajax(url, data, "POST");
+//获取商品分类
+export const getCategories = data => ajax("categories", data);
+//添加分类
+export const addCategoriesAjax = data => ajax("categories", data, "POST");
+//根据 id 查询分类
+export const getCategoriesByIdAjax = url => ajax(url);
+// 编辑提交分类
+export const editCategoriesAjax = (url, data) => ajax(url, data, "PUT");
+// 删除分类
+export const deleteCategoriesAjax = (url, data) => ajax(url, data, "DELETE");

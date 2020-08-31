@@ -20,7 +20,7 @@
         </div>
         <el-col :span="24">
           <el-menu
-            :default-active="this.$route.path"
+            :default-active="$route.path"
             class="el-menu-vertical-demo"
             background-color="#545c64"
             text-color="#fff"

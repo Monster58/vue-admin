@@ -42,3 +42,17 @@ export const getCategoriesByIdAjax = url => ajax(url);
 export const editCategoriesAjax = (url, data) => ajax(url, data, "PUT");
 // 删除分类
 export const deleteCategoriesAjax = (url, data) => ajax(url, data, "DELETE");
+//获取分类参数
+export const getCategoriesParamsAjax = (url, data) => ajax(url, data);
+// 添加动态参数或者静态属性
+export const addCategoriesParamsAjax = (url, data) => ajax(url, data, "POST");
+//根据 ID 查询参数
+export const getCategoriesParamsByIdAjax = url => ajax(url);
+// 编辑提交参数
+export const putCategoriesParamsAjax = (url, data) => ajax(url, data, "PUT");
+//  删除参数
+export const deleteCategoriesParamsAjax = url => ajax(url, {}, "DELETE");
+//获取商品列表数据
+export const getGoodsListAjax = data => ajax("goods", data);
+// 删除商品
+export const deleteGoodsAjax = (url, data) => ajax(url, data, "DELETE");

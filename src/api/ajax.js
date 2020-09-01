@@ -4,7 +4,7 @@
 */
 import axios from "axios";
 // https://www.liulongbin.top:8888  公共接口
-axios.defaults.baseURL = "http://127.0.0.1:8888/api/private/v1/";
+axios.defaults.baseURL = process.env.VUE_APP_BASEAPI;
 // 添加请求拦截器(提供 `token` 令牌)
 axios.interceptors.request.use(
   function(config) {

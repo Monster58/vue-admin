@@ -6,6 +6,7 @@ import "./assets/reset.css";
 import "./assets/global.css";
 import App from "./App.vue";
 import router from "./router";
+
 // 全局组件
 import breadcrumb from "@c/breadcrumb";
 

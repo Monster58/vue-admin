@@ -9,3 +9,7 @@
 .el-menu-item-group__title {
     padding: unset !important;
 }
+.ql-editor{
+    min-height: 200px !important;
+}
+  

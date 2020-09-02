@@ -17,7 +17,9 @@
           </el-input>
         </el-col>
         <el-col :span="10">
-          <el-button type="primary">添加商品</el-button>
+          <el-button @click="$router.push('/goods/addGoods')" type="primary"
+            >添加商品</el-button
+          >
         </el-col>
       </el-row>
       <el-table

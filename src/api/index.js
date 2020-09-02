@@ -56,3 +56,9 @@ export const deleteCategoriesParamsAjax = url => ajax(url, {}, "DELETE");
 export const getGoodsListAjax = data => ajax("goods", data);
 // 删除商品
 export const deleteGoodsAjax = (url, data) => ajax(url, data, "DELETE");
+// 添加商品
+export const addGoodsAjax = data => ajax("goods", data, "POST");
+//订单数据列表
+export const getOrdersAjax = data => ajax("orders", data);
+//查看物流信息
+export const getLogisticsAjax = url => ajax(url);

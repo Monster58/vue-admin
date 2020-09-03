@@ -62,3 +62,5 @@ export const addGoodsAjax = data => ajax("goods", data, "POST");
 export const getOrdersAjax = data => ajax("orders", data);
 //查看物流信息
 export const getLogisticsAjax = url => ajax(url);
+//获取图表
+export const getReportsAjax = () => ajax("reports/type/1");
